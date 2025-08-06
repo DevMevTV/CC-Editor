@@ -125,6 +125,7 @@ local function showCreateMenu()
         local file = fs.open(fs.combine(currentPath, name), "w+")
         file.close()
         selection = 1
+        term.setCursorBlink(false)
     end
     
     local function createFolder()
