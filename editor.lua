@@ -69,6 +69,7 @@ local function open()
         selection = 1
     else
         shell.run("/rom/programs/edit.lua", "\""..fullPath.."\"")
+        term.setCursorBlink(false)
     end
 end
 
@@ -125,7 +126,6 @@ local function showCreateMenu()
         local file = fs.open(fs.combine(currentPath, name), "w+")
         file.close()
         selection = 1
-        term.setCursorBlink(false)
     end
     
     local function createFolder()
