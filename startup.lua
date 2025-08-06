@@ -6,7 +6,7 @@ end
 local editorText = getText("https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/editor.lua")
 local startupText = getText("https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/startup.lua")
 
-local file = fs.open("/bin/editor.lua", "rw")
+local file = fs.open("/bin/editor.lua", "w+")
 if file.readAll() ~= editorText then
     file.write(editorText)
     term.setTextColor(colors.green)
@@ -15,7 +15,7 @@ if file.readAll() ~= editorText then
 end
 file.close()
 
-local file = fs.open("/startup/editor.lua", "rw")
+local file = fs.open("/startup/editor.lua", "w+")
 if file.readAll() ~= startupText then
     file.write(startupText)
     term.setTextColor(colors.green)
