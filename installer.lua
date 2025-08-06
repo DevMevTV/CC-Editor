@@ -26,6 +26,14 @@ shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/hea
 
 fs.makeDir("/bin")
 
+if fs.exists("/bin/editor.lua") then
+    fs.delete("/bin/editor.lua")
+end
+
 shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/editor.lua", "/bin/editor.lua")
 
 shell.setAlias("editor", "/bin/editor.lua")
+
+term.setTextColor(colors.green)
+print("Successfully installed Editor")
+term.setTextColor(colors.white)
