@@ -122,7 +122,7 @@ local function showCreateMenu()
                 end
             end
         end
-        local file = fs.open(fs.combine(currentPath, name))
+        local file = fs.open(fs.combine(currentPath, name), "w+")
         file.close()
         selection = 1
     end
