@@ -22,10 +22,10 @@ if fs.exists("/startup/editor.lua") then
     fs.delete("/startup/editor.lua")
 end
 
-shell.run("wget", "", "/startup/editor.lua")
+shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/startup.lua", "/startup/editor.lua")
 
 fs.makeDir("/bin")
 
-shell.run("wget", "", "/bin/editor.lua")
+shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/editor.lua", "/bin/editor.lua")
 
 shell.setAlias("editor", "/bin/editor.lua")
