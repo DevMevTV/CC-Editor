@@ -286,8 +286,10 @@ rightClickFrame.handle = function()
     local function delete()
         local files = getFiles()
         local path = fs.combine(currentPath, files[mainFrame.selection])
+        term.clear()
+        term.setCursorPos(1, 1)
         while true do
-            write("Are you sure you want to delete", files[mainFrame.selection].."? [Y/N]: ")
+            write("Are you sure you want to delete "..files[mainFrame.selection].."? [Y/N]: ")
             local a = read()
             if a:lower() == "y" then
                 break
@@ -327,11 +329,21 @@ rightClickFrame.handle = function()
                 if y == math.floor(h/2-1) and x == math.floor(w/2+4) then
                     break
                 elseif y == math.floor(h/2) and x >= math.floor(w/2-3) and x <= math.floor(w/2+2) then
-                    rename()
-                    break
+                    if rightClickFrame.selection ~= 1 then
+                        rightClickFrame.selection = 1
+                        rightClickFrame.draw()
+                    else
+                        rename()
+                        break
+                    end
                 elseif y == math.floor(h/2+1) and x >= math.floor(w/2-3) and x <= math.floor(w/2+2) then
-                    delete()
-                    break
+                    if rightClickFrame.selection ~= 2 then
+                        rightClickFrame.selection = 2
+                        rightClickFrame.draw()
+                    else
+                        delete()
+                        break
+                    end
                 end
             end
         end
