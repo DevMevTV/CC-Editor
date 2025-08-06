@@ -33,7 +33,9 @@ local function draw()
     term.clear()
     term.setCursorPos(1, 1)
     print("Explorer - "..currentPath)
-    drawPlusButton()
+    if not string:find("^/rom") then
+        drawPlusButton()
+    end
     local files = getFiles(currentPath)
     
     for i, file in ipairs(files) do
@@ -208,18 +210,23 @@ while true do
     elseif event == "mouse_click" then
         local button, x, y = p1, p2, p3
         local w, _ = term.getSize()
+
+        if button == 1 then
         
-        if y == 1 and x >= w - 2 then
-            showCreateMenu()
-        else
-            local index = y - 2
-            if index >= 1 and index <= #files then
-                if selection == index then
-                    open()
-                else
+            if y == 1 and x >= w - 2 then
+                if not string:find("^/rom") then
+                    showCreateMenu()
+                end
+            else
+                local index = y - 2
+                if index >= 1 and index <= #files then
+                    if selection == index then
+                        open()
+                    else
+                        selection = index
+                    end
                     selection = index
                 end
-                selection = index
             end
         end
     end
