@@ -1,0 +1,1 @@
+shell.setAlias("editor", "/bin/editor.lua")
