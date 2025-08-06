@@ -9,12 +9,18 @@ local startupText = getText("https://raw.githubusercontent.com/DevMevTV/CC-Edito
 local file = fs.open("/bin/editor.lua", "rw")
 if file.readAll() ~= editorText then
     file.write(editorText)
+    term.setTextColor(colors.green)
+    print("Editor Script Updated")
+    term.setTextColor(colors.white)
 end
 file.close()
 
 local file = fs.open("/startup/editor.lua", "rw")
 if file.readAll() ~= startupText then
     file.write(startupText)
+    term.setTextColor(colors.green)
+    print("Editor Startup Script Updated")
+    term.setTextColor(colors.white)
 end
 file.close()
 
