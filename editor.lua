@@ -39,12 +39,18 @@ local function draw()
     for i, file in ipairs(files) do
         term.setCursorPos(1, i + 2)
         if i == selection then
+            term.setTextColor(colors.yellow)
             term.write("> ")
+            term.setTextColor(colors.white)
         else
             term.write("  ")
         end
         if fs.isDir(fs.combine(currentPath, file)) then
-            term.write("["..file.."]")
+            term.write("[")
+            term.setTextColor(colors.green)
+            term.write(file)
+            term.setTextColor(colors.white)
+            term.write("]")
         else
             term.write(file)
         end
