@@ -33,7 +33,7 @@ local function draw()
     term.clear()
     term.setCursorPos(1, 1)
     print("Explorer - "..currentPath)
-    if not string:find("^/rom") then
+    if not currentPath:find("^/rom") then
         drawPlusButton()
     end
     local files = getFiles(currentPath)
@@ -214,7 +214,7 @@ while true do
         if button == 1 then
         
             if y == 1 and x >= w - 2 then
-                if not string:find("^/rom") then
+                if not currentPath:find("^/rom") then
                     showCreateMenu()
                 end
             else
