@@ -65,7 +65,7 @@ local function open()
     local fullPath = fs.combine(currentPath, selected)
     
     if fs.isDir(fullPath) then
-        currentPath = fullPath
+        currentPath = "/"..fullPath
         selection = 1
     else
         shell.run("/rom/programs/edit.lua", "\""..fullPath.."\"")
@@ -201,7 +201,7 @@ while true do
         elseif key == keys.enter then
             open()
         elseif key == keys.backspace and currentPath ~= "/" then
-            currentPath = fs.getDir(currentPath)
+            currentPath = "/"..fs.getDir(currentPath)
             selection = 1
         end
     elseif event == "mouse_click" then

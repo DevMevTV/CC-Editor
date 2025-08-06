@@ -22,15 +22,20 @@ if fs.exists("/startup/editor.lua") then
     fs.delete("/startup/editor.lua")
 end
 
-shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/startup.lua", "/startup/editor.lua")
+local function getText(url)
+    local response = http.get(url)
+    return response.readAll()
+end
+
+local file = fs.open("/startup/editor.lua", "w+")
+file.write(getText("https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/startup.lua"))
+file.close()
 
 fs.makeDir("/bin")
 
-if fs.exists("/bin/editor.lua") then
-    fs.delete("/bin/editor.lua")
-end
-
-shell.run("wget", "https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/editor.lua", "/bin/editor.lua")
+local file = fs.open("/bin/editor.lua", "w+")
+file.write(getText("https://raw.githubusercontent.com/DevMevTV/CC-Editor/refs/heads/main/editor.lua"))
+file.close()
 
 shell.setAlias("editor", "/bin/editor.lua")
 
